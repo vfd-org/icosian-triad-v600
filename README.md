@@ -1,0 +1,164 @@
+# icosian-triad-v600
+
+> **The icosian triad on V₆₀₀: substrate, closure, generation. A geometry-first
+> open research preprint bundle, with 13 reproducible exact-arithmetic
+> simulations and a Hilbert modular L-function identity over ℚ(√5).**
+
+[![Status](https://img.shields.io/badge/status-pre--peer--review-blue)](#status)
+[![Version](https://img.shields.io/badge/version-1.0.0--rc1-blue)](CHANGELOG.md)
+[![Code](https://img.shields.io/badge/code-Apache--2.0-green)](LICENSE)
+[![Prose](https://img.shields.io/badge/prose-CC%20BY%204.0-green)](LICENSE)
+
+---
+
+## What this is
+
+Two-paper preprint bundle deriving the icosian triad
+$(\mathcal{I}, \mathcal{G}, \mathcal{C})$ on V₆₀₀ — the 120-vertex set
+of the regular 600-cell, realised as the unit group of the maximal
+icosian order $\mathcal{I}_{\max}$ over ℚ(√5).
+
+**Paper 1 (core math)** establishes:
+
+- A 9-class symmetric Bose–Mesner association scheme on V₆₀₀ with
+  $A_1$-eigenvalues in ℤ[φ] and Galois-paired multiplicity sequence
+  `(1, 4, 9, 16, 25, 36, 9, 16, 4)`.
+- A closure operator `C_φ = L + φ⁻²·I` acting diagonally on each
+  eigenspace; σ-Galois conjugate `C_{1-φ} = L + φ²·I`.
+- The icosian quaternion norm `N_H : 𝓘_max → ℤ[φ]`, surjective onto
+  totally positive ℤ[φ]-primes (Eichler–Hijikata, with bounded
+  explicit Lipschitz witnesses).
+- σ-equivariance: `σ ∘ N_H = N_H ∘ σ̂`.
+- The L-function identity `L(Θ_𝓘, s) = ζ_K(s)·ζ_K(s-1)·C_2(s)` for
+  `K = ℚ(√5)`, with the local-2 correction
+  `C_2(s) = (1 - 2·2^{-s} + 2^{2-2s})` derived in the appendix. The
+  classical Riemann zeta function ζ(s) appears as one Dedekind factor.
+
+**Paper 2 (positioning)** catalogues where the same triad appears
+across the broader VFD programme: cascade refinement, hypersphere
+cosmology, microtubule dipole class (Note G), the 24–600 spectral
+bridge, and the existence-closure programme involutions τ_ico / τ_spec.
+The expansion-status table records source, type, status, and principal
+open gap per cross-identification.
+
+## Status
+
+- **Pre-peer-review open research preprint bundle.** Not independently
+  validated.
+- **No conditional hypotheses in the finite verification layer.**
+  Universal arithmetic claims are imported from classical
+  Eichler–Hijikata / Eichler–Brandt theory and checked in bounded
+  finite ranges by the accompanying simulations.
+- **No claim about the Riemann Hypothesis** or its Hilbert-modular
+  generalisations.
+
+## Reading order
+
+| # | Paper | PDF | Pages-equivalent | What it is |
+|---|-------|-----|------------------|------------|
+| 1 | [The Icosian Triad on V₆₀₀](papers/01-icosian-triad/icosian-triad.tex) | [`icosian-triad.pdf`](papers/01-icosian-triad/icosian-triad.pdf) | ~30 pp | Core math: V₆₀₀ structure, triad, L-function |
+| 2 | [Expansions of the Icosian Triad](papers/02-expansions/expansions.tex) | [`expansions.pdf`](papers/02-expansions/expansions.pdf) | ~12 pp | Positioning: where the triad appears across the VFD programme |
+
+Read Paper 1 first; it is self-contained and is the mathematical
+anchor. Paper 2 is positioning only and assumes Paper 1.
+
+## Documentation
+
+| File | Role |
+|------|------|
+| [`docs/FINDINGS.md`](docs/FINDINGS.md) | Per-sim findings summary — what each of the 13 sims locks |
+| [`docs/VOCABULARY.md`](docs/VOCABULARY.md) | Canonical terminology for the three legs of the triad |
+| [`docs/TRILOGY_AUDIT.md`](docs/TRILOGY_AUDIT.md) | Why the earlier closure-irreducibles trilogy was retired |
+| [`CHANGELOG.md`](CHANGELOG.md) | What's in this release |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | How to engage / what we accept / what we don't |
+
+## Reproduction
+
+```bash
+cd repro
+pip install -r requirements.txt
+bash run_all_sims.sh
+```
+
+Outputs land in `repro/output/*.json`. Total runtime ~5 minutes on a
+standard laptop.
+
+| Sim | Script | What it locks |
+|-----|--------|----------------|
+|  1 | `sim_geometry_first.py`         | 9 distinct W(H₄)-fingerprints on V₆₀₀ |
+|  2 | `sim_irrep_identification.py`   | Trivial + reflection irrep identification |
+|  3 | `sim_second_shell_operator.py`  | (A, A₂, A₃) CSCO on V₆₀₀ |
+|  4 | `sim_association_scheme.py`     | 9-class scheme + 15 axiom checks |
+|  5 | `sim_p_polynomial_structure.py` | `A_i = p_i(A₁)` for each `i` |
+|  6 | `sim_tridiagonal_L1.py`         | **Deliberate FAIL:** V₆₀₀ is NOT narrow-DRG |
+|  7 | `sim_graph_distance_scheme.py`  | **Deliberate FAIL:** graph-distance ≠ Euclidean shells |
+|  8 | `sim_closure_sigma_action.py`   | C_φ spectrum + σ-pairing structure |
+|  9 | `sim_generation_operator.py`    | N_H surjective on 20 ℤ[φ]-primes |
+| 10 | `sim_triad_isomorphism.py`      | σ ∘ N_H = N_H ∘ σ̂ on every witness |
+| 11 | `sim_representation_numbers.py` | `r(π) = 8(1 + N_Q(π))` closed form |
+| 12 | `sim_multiplicativity.py`       | r/8 multiplicative on coprime pairs |
+| 13 | `sim_theta_L_function.py`       | `L(Θ_𝓘, s) → ζ_K(s)·ζ_K(s-1)` numerically |
+
+Sims 6 and 7 are deliberate negatives that surfaced load-bearing
+structural findings — see `docs/FINDINGS.md` for what each
+"failure" actually tells us about V₆₀₀.
+
+## Relationship to other VFD releases
+
+This bundle is the structural anchor for several existing VFD releases:
+
+- [`existence-life-closure-programme`](https://github.com/vfd-org/existence-life-closure-programme)
+  uses `τ_ico` with `dim Fix = 94`. Paper 1 derives this from the
+  σ-fixed eigenspace decomposition of A₁.
+- [`hypersphere-cosmology`](https://github.com/vfd-org/hypersphere-cosmology)
+  uses the σ-paired Λ dipole. Paper 1 grounds the class as the
+  adjacency `+6φ` eigenspace `E₁`.
+- [`the-24-600-spectral-bridge`](https://github.com/vfd-org/the-24-600-spectral-bridge)
+  analyses the λ_L = 12 eigenspace of V₆₀₀. Paper 1 places this
+  in the full 9-eigenspace context.
+
+Paper 2 makes these relationships explicit.
+
+## How not to interpret this bundle
+
+This bundle is **not**:
+
+- A proof of the Riemann Hypothesis or any generalisation.
+- A claim that consciousness, life, or cosmology have been "solved"
+  by closure mathematics. The cross-domain identifications in Paper 2
+  are conditional on bridge hypotheses named in each section.
+- A continuation of the earlier closure-irreducibles trilogy (see
+  `docs/TRILOGY_AUDIT.md`).
+
+This bundle **is**:
+
+- A geometry-first derivation of three structural operators on
+  V₆₀₀, with classical arithmetic theorem imports cited at every
+  universal claim.
+- An honest positioning of where the same structure appears across
+  the existing VFD programme, with conditionality marked.
+
+## License
+
+- Code (`repro/`): Apache 2.0.
+- Prose (`papers/`, `docs/`, `README.md`, `CHANGELOG.md`,
+  `CONTRIBUTING.md`): CC BY 4.0.
+
+See [`LICENSE`](LICENSE) for full text.
+
+## Citation
+
+See [`CITATION.cff`](CITATION.cff) for machine-readable citation
+metadata. A suggested BibTeX entry:
+
+```bibtex
+@misc{smart2026icosianTriad,
+  author       = {Smart, Lee},
+  title        = {The Icosian Triad on $V_{600}$: a geometry-first derivation},
+  year         = {2026},
+  publisher    = {Institute of Vibrational Field Dynamics},
+  howpublished = {Open research preprint},
+  url          = {https://github.com/vfd-org/icosian-triad-v600},
+  note         = {Pre-peer-review. Not independently validated.},
+}
+```

@@ -1,0 +1,539 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[hidelinks,colorlinks=true,linkcolor=blue!50!black,citecolor=blue!40!black,urlcolor=blue!50!black]{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape Expansions of the Icosian Triad}
+\fancyhead[R]{\small\thepage}
+\fancyfoot[C]{\footnotesize\itshape Pre-peer-review open research preprint --- not independently validated.}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\II}{\mathcal{I}}
+\newcommand{\GG}{\mathcal{G}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\NH}{\mathrm{N}_{\mathrm{H}}}
+\newcommand{\Zphi}{\Z[\varphi]}
+\newcommand{\WHfour}{W(H_4)}
+
+\title{\textbf{Expansions of the Icosian Triad}\\[2pt]
+\large Where $(\II, \GG, \CC)$ appears in cosmology, biology, cascade dynamics,\\[1pt]
+and the existence-closure programme\\[6pt]
+\small (Open research preprint --- pre-peer-review draft)}
+
+\author{%
+  Lee Smart\\[4pt]
+  \textit{Institute of Vibrational Field Dynamics}\\[2pt]
+  \texttt{contact@vibrationalfielddynamics.org}\\[2pt]
+  \texttt{@vfd\_org}%
+}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+\noindent
+The companion paper~\cite{icosianTriadCore} (henceforth ``Paper 1'') derived
+the icosian triad $(\II, \GG, \CC)$ from the geometry of the
+$600$-cell vertex set $V_{600}$. The present paper catalogues the
+\emph{expansions} of that triad — locations across the Vibrational Field
+Dynamics programme where the same structural objects already appear, often
+in seemingly unrelated contexts.
+
+\smallskip\noindent\textbf{Five expansion domains.}
+\begin{enumerate}
+\item \textbf{Cascade ladder.} $V_{600}$ is the $H_4$ rung of the
+cascade \cite{cascadeDerivation,cascadeRefinementPapers}. The
+$\sigma$-fixed eigenspace family (total dimension $94$) and the
+$\sigma$-paired eigenspaces ($E_1, E_2$ on one side, $E_6, E_8$ on the
+other, with $4 + 9 = 13$ dimensions per side) are numerically adjacent
+to the cascade's finite-level refinement infrastructure
+\cite{cascadeRefinementPapers,cascadeSelectionH4}, but a vertex-level
+intertwiner between Paper~1's $\C[V_{600}]$ eigenspaces and the
+cascade's auxiliary fibre $F^0$ has not been constructed.
+
+\item \textbf{Cosmology.} The hypersphere-cosmology release
+\cite{hypersphereCosmology} uses the $+6\varphi$ adjacency eigenspace
+of $V_{600}$ (Paper~1's $E_1$, dimension $4$) as the substrate of the
+$\Lambda$ dipole and the $H_0$ correction. Paper~1 provides the formal
+definition of that eigenspace.
+
+\item \textbf{Biology / consciousness.} Note G \cite{noteG} states a
+consistency check between volatile-anaesthetic potency and a candidate
+microtubule-lattice realisation of the $+6\varphi$ dipole eigenspace
+(Spearman $\rho = +0.94$, $n=11$ volatile inhaled agents only). The
+substrate map remains conditional; the H-MT-Bridge cortical EEG
+prediction is the independence-promoting test. Paper 1 provides the
+underlying spectral object.
+
+\item \textbf{Spectral bridge.} The Laplacian $\lambda_L = 12$
+eigenspace, which is Paper~1's adjacency $E_4$ (dimension $25$, $A_1$
+eigenvalue $0$), carries the Schl\"afli $5$-coset spectral bridge of
+\cite{schlafliBridge,spectralBridge24600}. Throughout this paper the
+convention is $\lambda_L$ for Laplacian $L = 12 I - A_1$ and
+$\lambda_{A_1}$ for adjacency.
+
+\item \textbf{Existence programme.} The two involution conventions of
+\cite{existenceClosure} --- $\tau_\mathrm{ico}$ with
+$\dim \mathrm{Fix} = 94$ and $\tau_\mathrm{spec}$ with
+$\dim \mathrm{Fix} = 116$ --- relate to Paper~1 as follows.
+$\tau_\mathrm{ico}$ is identified with Paper~1's Galois $\sigma$-action;
+its $94$-dimensional fixed locus is the union of the $\sigma$-fixed
+$A_1$-eigenspaces. $\tau_\mathrm{spec}$ is the spectral involution
+acting as $-1$ on the adjacency $+6\varphi$ eigenspace (Paper~1's
+$E_1$, dimension $4$) and as identity on the remaining $116$ dimensions;
+a geometric or vertex-level realisation of $\tau_\mathrm{spec}$
+remains open.
+\end{enumerate}
+
+\smallskip\noindent\textbf{Status.}
+This paper makes no new mathematical claims about $V_{600}$. It is a
+positioning document. Cross-references are to existing public preprints and
+releases; predictions outside Paper~1 are stated as cited rather than as
+re-derived.
+\end{abstract}
+
+\bigskip
+
+\noindent\fbox{%
+\parbox{0.96\linewidth}{%
+\textbf{Plain-language summary.}
+
+\smallskip\noindent
+Paper~1 of this pair developed a single structural object — the
+\emph{icosian triad} on $V_{600}$. Once that object is in hand, several
+parts of the broader programme that had been described with different
+languages turn out to be referring to the \emph{same} mathematical
+content.
+
+\smallskip\noindent
+This paper points out those cross-identifications. It does not extend the
+mathematics; it shows where the mathematics already lives in published
+work, sometimes under different names.
+
+\smallskip\noindent
+The five recurrences listed in the abstract are: the cascade ladder,
+cosmology, biology, the $24$--$600$ spectral bridge, and the existence
+programme's involution conventions. Each is a separate paper or
+preprint in the public record. Each uses, implicitly or explicitly,
+the structure that Paper~1 derives in full.
+}}
+
+\bigskip
+
+\subsection*{Expansion status table}
+
+The five expansions below relate to Paper~1 with different status. The
+following compact table records, for each:
+the cited source, the type of mathematical / empirical content, whether
+the cross-identification is a theorem, candidate substrate map, or
+numerical adjacency, and the principal open gap.
+
+\begin{center}\footnotesize
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{|p{0.13\textwidth}|p{0.18\textwidth}|p{0.18\textwidth}|p{0.18\textwidth}|p{0.18\textwidth}|}
+\hline
+\textbf{Expansion} & \textbf{Source} & \textbf{Type} & \textbf{Status} & \textbf{Principal open gap} \\
+\hline
+Cascade ladder
+  & \cite{cascadeRefinementPapers,cascadeSelectionH4}
+  & Cited theorems (28-dim $\WHfour$-fixed $F^0$, block Laplacian)
+  & Spectral adjacency to Paper~1's eigenspaces, no intertwiner
+  & Explicit intertwiner $F^0 \leftrightarrow \C[V_{600}]$ \\
+\hline
+Cosmology
+  & \cite{hypersphereCosmology}
+  & Empirical, 7 observables $< 0.5\%$ Planck 2018
+  & Candidate substrate map; uses $E_1$ dipole numerically
+  & Operator-level identification of cosmology $F$ with $\CC_\varphi|_{E_1}$ \\
+\hline
+Biology
+  & \cite{noteG}
+  & Spearman $\rho = +0.94$ consistency check (volatile, $n=11$)
+  & Candidate microtubule substrate map; H-MT-Bridge conditional
+  & Cortical-EEG $R_{\mathrm{phase}}$ pre-registered test \\
+\hline
+Spectral bridge
+  & \cite{schlafliBridge,spectralBridge24600,bridgeSynthesis}
+  & Cited theorems (exact $\Q(\sqrt 5)$ arithmetic)
+  & $\lambda_L = 12$ lift into Paper~1's $E_4$
+  & $A_5$ vs $\WHfour$ equivariance distinction --- settled in this paper \\
+\hline
+Existence programme
+  & \cite{existenceClosure,lifeAsClosure}
+  & Cited definitions ($\tau_{\mathrm{ico}}$, $\tau_{\mathrm{spec}}$)
+  & $\tau_{\mathrm{ico}}$ = Paper~1's $\sigma$; $\tau_{\mathrm{spec}}$ spectrally defined as $-1$ on $E_1$
+  & Geometric / vertex-level realisation of $\tau_{\mathrm{spec}}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+This table is the load-bearing scope artefact for the cross-identifications
+below. Each subsequent section should be read against its row.
+
+\bigskip
+
+\section{Introduction}\label{sec:intro}
+
+The icosian triad $(\II, \GG, \CC)$ defined in Paper~1 is the structural
+object obtained by combining three simultaneous facts about the unit
+icosian group $V_{600}$ inside the quaternion algebra over $\Q(\sqrt 5)$:
+
+\begin{itemize}
+  \item a $9$-class symmetric Bose--Mesner association scheme with
+    $A_1$-spectrum in $\Zphi$ and multiplicity sequence
+    $(1,4,9,16,25,36,9,16,4)$;
+  \item a closure operator $\CC_\varphi = L_{V_{600}} + \varphi^{-2}\!\cdot\! I$
+    acting diagonally on the $9$ eigenspaces;
+  \item a quaternion norm map $\GG = \NH : \II \to \Zphi$ surjective onto
+    totally positive $\Zphi$-primes, with $\sigma$-equivariance
+    $\sigma \NH = \NH \widehat\sigma$.
+\end{itemize}
+
+The total dimension $\dim \mathrm{Fix}(\sigma) = 94$ on the $A_1$-eigenspace
+decomposition is the load-bearing invariant.
+
+The Vibrational Field Dynamics programme contains five public preprints (or
+release bundles) in which this triad already appears in disguise. The present
+paper catalogues these appearances. The mathematical content of each
+appearance is in the cited source; here we connect them via Paper~1.
+
+\bigskip
+
+\section{Expansion 1: the cascade ladder}\label{sec:cascade}
+
+\subsection*{Statement}
+
+The cascade ladder \cite{cascadeDerivation,cascadeRefinementPapers}
+places $V_{600}$ at the $H_4$ rung, with downstream rungs at the
+$40$-vertex root system (cf.\ \cite{cascadeRefinementPapers}) and below.
+The cascade-selection-h4 paper \cite{cascadeSelectionH4} requires a
+$\WHfour$-fixed subspace $(F^0)^{\WHfour}$ of dimension $28$ on the
+fibre of each level of the finite-level refinement, and witnesses the
+$(\mathrm{O}1)$ closure obligation via the block Laplacian
+$L_N^\mathrm{block} = L_N^\mathrm{cl} \otimes \mathrm{id}_{F^0}$.
+
+\subsection*{Connection}
+
+Paper~1's $9$-class scheme contains the $\WHfour$-representation structure
+of $V_{600}$ at the $\C[V_{600}]$ level. The $28$-dimensional
+$\WHfour$-fixed subspace of the cascade fibre $F^0$ in
+\cite{cascadeSelectionH4} is a separate structural object from the
+$\C[V_{600}]$ eigenspaces; an explicit intertwiner between the two
+spaces is not yet constructed.
+
+What can be cleanly stated: cascade-selection-h4's block-Laplacian
+lowest non-zero eigenvalue at $N=0$,
+$\lambda_+ = 9 - 3\sqrt 5 = 12 - 6\varphi$, equals the Laplacian
+$L = 12 I - A_1$ eigenvalue corresponding to Paper~1's $A_1$-eigenvalue
+$\lambda_1 = 6\varphi$ (eigenspace $E_1$, dimension $4$). The
+$\sigma$-conjugate pair $(E_1, E_8)$ of Paper~1's spectrum is the
+Galois partner that organises this lowest cascade band; explicit
+identification of the fibre $F^0$ with subspaces of $\C[V_{600}]$ is
+deferred to a follow-on note.
+
+\subsection*{Consequence}
+
+Paper~1 provides the full $V_{600}$ spectral basis that organises the
+cascade's $H_4$-rung structure at the polytope level. The explicit
+intertwiner between cascade fibre $F^0$ and $\C[V_{600}]$ remains an
+open structural question.
+
+\bigskip
+
+\section{Expansion 2: cosmology}\label{sec:cosmology}
+
+\subsection*{Statement}
+
+The hypersphere-cosmology release \cite{hypersphereCosmology} derives
+the cosmological constant $\Lambda$ as a $\sigma$-paired dipole
+correction to the $E_8$-substrate quadratic form, with the Planck-side
+numerics $\Lambda$ within $0.078\%$, $H_0$ within $0.45\%$, and
+$\Omega_\Lambda$ within $0.083\%$ of Planck 2018 inferred values,
+together with four further cosmological observables to $< 0.5\%$ (seven
+total). The dipole construction uses the adjacency eigenvalue $+6\varphi$
+sector on $V_{600}$ (Paper~1's $E_1$, dimension $4$) and the
+complementary Laplacian value $12 - 6\varphi$.
+
+\subsection*{Connection (candidate substrate map)}
+
+The hypersphere-cosmology dipole sector is, numerically, the
+adjacency-$+6\varphi$ eigenspace of $V_{600}$, equivalently Paper~1's
+$E_1$ (dimension $4$). The Galois partner $E_8$ (adjacency $6 - 6\varphi$,
+dimension $4$) does not enter the cosmology paper's $\Lambda$ formula
+directly; it is recorded by the Galois pairing as a separate object.
+The full identification of the cosmology source's operator
+$F = \alpha R + \beta E - \gamma Q$ with a restriction of Paper~1's
+$\CC_\varphi$ is conditional on the cascade-substrate map and is not
+established at the operator level in either paper.
+
+\subsection*{Consequence}
+
+Paper~1 supplies the spectral basis ($E_1$ at adjacency $+6\varphi$) in
+which the cosmology source's dipole construction lives. The cosmology
+numerical success ($94/94$ verification tests) is consistent with the
+icosian triad as candidate substrate; a full operator-level
+identification would convert the consistency into a structural prediction
+and is open.
+
+\bigskip
+
+\section{Expansion 3: biology / consciousness}\label{sec:biology}
+
+\subsection*{Statement}
+
+Note G \cite{noteG} reports that the $\sigma$-paired closure-dipole
+class on $V_{600}$, when interpreted as a candidate microtubule-lattice
+dipole substrate, gives a consistency check between
+literature-DFT tubulin dipoles and clinical anaesthetic potencies:
+Spearman $\rho = +0.94$ on $n = 11$ volatile inhaled anaesthetics (the
+all-agent correlation including IV agents is much weaker,
+$\rho \approx +0.5$). Note G frames this as a consistency check, not
+independent causal evidence. Note G also states the H-MT-Bridge
+conditional proposition: the cortical EEG $R_{\mathrm{phase}}$ ratio
+(sevoflurane / propofol) is at least $1.5$ under equipotent dosing.
+
+\subsection*{Connection (candidate substrate map)}
+
+The dipole class of Note G is, in Paper~1's notation, the same
+adjacency-$+6\varphi$ eigenspace $E_1$ (dimension $4$) that appears in
+the cosmology source. The substrate map from Paper~1's $E_1$ to the
+tubulin $\alpha$/$\beta$-dimer dipole array is a conditional candidate
+mapping; Note G explicitly does not validate it.
+
+The Note~G T15 result is a uniform $V_{600}$-leverage observation, not a
+residue-intersection result. The biological closure-control-node
+candidate residues identified in \cite{noteG} arise from downstream
+symmetry breaking on the candidate substrate, not directly from the
+$E_1$ basis.
+
+\subsection*{Consequence}
+
+Paper~1 supplies the spectral object ($E_1$ at adjacency $+6\varphi$)
+that Note G uses as its candidate substrate. The $\rho = +0.94$
+correlation is a consistency check on the candidate map (volatile-agent
+subset). The H-MT-Bridge cortical-EEG prediction is the
+independence-promoting test; until that test produces data, the substrate
+identification stays conditional.
+
+\bigskip
+
+\section{Expansion 4: the 24-600 spectral bridge}\label{sec:24600}
+
+\subsection*{Statement}
+
+The three-paper $24$--$600$ spectral bridge
+\cite{schlafliBridge,spectralBridge24600,bridgeSynthesis} establishes:
+\begin{itemize}
+  \item the $5$-coset decomposition $V_{600} = 2T \sqcup 2T\!\cdot\! g \sqcup 2T\!\cdot\! g^2 \sqcup 2T\!\cdot\! g^3 \sqcup 2T\!\cdot\! g^4$
+    (right cosets; $2T$ is non-normal in $V_{600}$) into five $24$-cell cosets;
+  \item the selective lift of each local $24$-cell Laplacian
+    $\lambda = 12$ eigenspace (dimension $2$) into the global $V_{600}$
+    Laplacian $\lambda = 12$ eigenspace, of dimension $25$, with exact
+    $\mathbb{Q}$-rational characters;
+  \item an explicit $A_5$ action on the cosets with character
+    $5 \cdot Y_5 = 2 \cdot Y_5 \oplus 3 \cdot Y_5$.
+\end{itemize}
+
+Throughout this section the symbol $\lambda$ refers to the
+Laplacian $L = 12\, I - A_1$, not to the adjacency $A_1$ used in
+Paper~1's spectrum table.
+
+\subsection*{Connection}
+
+Paper~1 supplies the full $A_1$-eigenstructure of $V_{600}$.
+Translating between conventions: the bridge's
+Laplacian eigenvalue $\lambda_L = 12$ corresponds to Paper~1's
+$A_1$-eigenvalue $\lambda_{A_1} = 0$, hence to eigenspace $E_4$
+(dimension $25$). The bridge's global $25$-dimensional $\lambda_L = 12$
+space is therefore exactly Paper~1's $E_4$. Separately, Paper~1's
+$E_0$ (dimension $1$, the all-ones eigenspace at $A_1$-eigenvalue $12$,
+equivalently Laplacian eigenvalue $0$) accounts for the global constant
+row inside this picture.
+
+The spectral bridge's selective lift corresponds to the
+$A_5$-equivariant projection onto $E_4$ from each local
+$24$-cell Laplacian's two-dimensional $\lambda_L = 12$ subspace.
+
+\subsection*{Consequence}
+
+The spectral bridge is the $E_4$-projection of a broader $9$-eigenspace
+structure, with $E_0$ accounting separately for the constant row.
+Paper~1 places this in the wider context. The other seven eigenspaces of
+$V_{600}$ ($E_1, E_2, E_3, E_5, E_6, E_7, E_8$) carry the $\sigma$-paired
+dipole class, the antipodal $\mathbb{Z}_2$-grading, and the
+$\sigma$-paired $9$-dimensional content, none of which is visible from
+the spectral bridge alone.
+
+\bigskip
+
+\section{Expansion 5: the existence programme involutions}\label{sec:existence}
+
+\subsection*{Statement}
+
+The existence-life-closure programme \cite{existenceClosure,lifeAsClosure}
+uses two involutions on $V_{600}$:
+\[
+  \tau_\mathrm{ico} \;:\; \dim \mathrm{Fix} = 94, \qquad
+  \tau_\mathrm{spec} \;:\; \dim \mathrm{Fix} = 116.
+\]
+Both commute with the closure operator $\CC_\varphi$ and both appear in
+theorem statements (the former) and simulation demonstrations (the latter)
+of the existence programme.
+
+\subsection*{Connection}
+
+$\tau_\mathrm{ico}$ is the Galois action $\sigma$ of Paper~1. Its fixed
+locus, restricted to the $A_1$-eigenspace decomposition, is
+\[
+  \mathrm{Fix}(\sigma) \;=\; E_0 \oplus E_3 \oplus E_4 \oplus E_5 \oplus E_7
+  \;=\; \dim 1 + 16 + 25 + 36 + 16 = 94,
+\]
+exactly matching the existence programme's load-bearing dimension.
+
+\subsection*{Consequence}
+
+Paper~1 derives the $94$-dimensional $\sigma$-fixed locus structurally. The
+existence programme's $\tau_\mathrm{ico}$ convention is the same object.
+
+\subsection*{Spectral status of $\tau_\mathrm{spec}$}
+
+The second involution $\tau_\mathrm{spec}$ with
+$\dim \mathrm{Fix} = 116$ is spectrally identified in
+\cite{existenceClosure}: it acts as $-1$ on the adjacency $+6\varphi$
+eigenspace (Paper~1's $E_1$, dimension $4$) and as identity on the
+remaining $116$ dimensions. What remains open is a geometric /
+vertex-level realisation of this involution; that is a clean
+combinatorial follow-on.
+
+\bigskip
+
+\section{What this paper does not do}\label{sec:non-claims}
+
+\begin{itemize}
+  \item This paper does not extend Paper~1's mathematics. Quantitative
+    claims used here are either cited from a prior source (cosmology,
+    biology, cascade, bridge papers) or are direct arithmetic
+    translations of Paper~1's spectrum into those sources' conventions.
+    Cross-domain identifications are positioning claims, conditional on
+    the substrate maps stated in each section.
+  \item It does not address the Riemann Hypothesis or its generalisations.
+  \item It does not propose new empirical predictions. The predictions
+    referenced (e.g.\ Note G's H-MT-Bridge) remain at the status established
+    in their source documents.
+  \item It does not aim to be the canonical synthesis of the VFD
+    programme; it is a localised positioning paper for the icosian triad's
+    appearances in cosmology, biology, cascade dynamics, the
+    $24$--$600$ spectral bridge, and the existence-closure programme.
+\end{itemize}
+
+\bigskip
+
+\section{Open follow-on directions}\label{sec:open}
+
+\begin{enumerate}
+  \item Geometric identification of $\tau_\mathrm{spec}$ (existence
+    programme) as an involution on $V_{600}$ with $\dim \mathrm{Fix} = 116$.
+
+  \item Construction of explicit Brandt / Hecke operators at higher prime
+    powers; decomposition of $\C[V_{600}]$ into Hecke-eigen-pieces.
+
+  \item Refinement of Note G's H-MT-Bridge from a consistency check
+    into an operator-level prediction tied to Paper~1's $E_1$
+    eigenspace (adjacency $+6\varphi$) and its Galois partner $E_8$.
+
+  \item Numerical study of zeros of $L(\Theta_\II, s) = \zeta_K(s) \zeta_K(s-1) \cdot C_2(s)$ (where $C_2(s)$ is the explicit local-$2$ factor of Paper~1, Theorem~18)
+    on the critical lines $\mathrm{Re}(s) = 1/2, 3/2$ (subject to classical
+    RH and GRH for $\chi_5$).
+
+  \item Comparison of the icosian theta with other definite quaternion-order
+    theta functions over real quadratic fields (Hurwitz over $\Q$, Lipschitz
+    over $\Q$, octahedral order over $\Q(\sqrt 2)$, $\dots$) to characterise
+    what is unique about the $\Q(\sqrt 5)$ / icosian case.
+\end{enumerate}
+
+\bigskip
+
+\bibliographystyle{plainnat}
+\begin{thebibliography}{99}
+
+\bibitem{icosianTriadCore}
+L.~Smart,
+\emph{The icosian triad on $V_{600}$: a geometry-first derivation},
+Companion to this paper, Institute of Vibrational Field Dynamics, 2026.
+
+\bibitem{cascadeDerivation}
+L.~Smart,
+\emph{Cascade derivation: from $E_8$ to the polytope ladder},
+Open research preprint, Institute of Vibrational Field Dynamics, 2026.
+
+\bibitem{cascadeRefinementPapers}
+L.~Smart,
+\emph{cascade-refinement-papers (P3 + P4 + cascade-refinement-compat + cascade-mechanism + cascade-selection-h4)},
+Five-paper bundle, Institute of Vibrational Field Dynamics, 2026.
+
+\bibitem{cascadeSelectionH4}
+L.~Smart,
+\emph{cascade-selection-h4: a witnessed $(\mathrm{O}1)$ discharge on the $H_4$ branch},
+In~\cite{cascadeRefinementPapers}.
+
+\bibitem{hypersphereCosmology}
+L.~Smart,
+\emph{Hypersphere Cosmology v1.1.0},
+Public release, github.com/vfd-org/hypersphere-cosmology, 2026.
+
+\bibitem{noteG}
+L.~Smart,
+\emph{Note G: Tubulin dipoles and the $\sigma$-paired closure-dipole class},
+Open research preprint, Institute of Vibrational Field Dynamics, 2026.
+
+\bibitem{schlafliBridge}
+L.~Smart,
+\emph{The Schl\"afli decomposition of the 600-cell},
+In~\cite{spectralBridge24600}.
+
+\bibitem{spectralBridge24600}
+L.~Smart,
+\emph{the-24-600-spectral-bridge (three-paper bundle)},
+Public release, github.com/vfd-org/the-24-600-spectral-bridge, 2026.
+
+\bibitem{bridgeSynthesis}
+L.~Smart,
+\emph{From Schl\"afli decomposition to spectral bridge: a first closure-projection channel in $V_{600}$},
+In~\cite{spectralBridge24600}.
+
+\bibitem{existenceClosure}
+L.~Smart,
+\emph{Existence as Closure},
+Open research preprint, Institute of Vibrational Field Dynamics, 2026.
+
+\bibitem{lifeAsClosure}
+L.~Smart,
+\emph{Life as Closure},
+Open research preprint, Institute of Vibrational Field Dynamics, 2026.
+
+\end{thebibliography}
+
+\end{document}
