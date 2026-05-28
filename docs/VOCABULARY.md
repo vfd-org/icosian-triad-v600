@@ -127,8 +127,8 @@ Avoid:
 - "The closure operator" without subscript (ambiguous — could be
   σ-conjugate `C_{1-φ}` instead)
 - "The norm map" without context (could be the field norm `N_Q`)
-- "Closure-irreducibles" (legacy terminology from the retired trilogy;
-  use "ℤ[φ]-primes via N_H" or "icosian primes" instead)
+- "Closure-irreducibles" — use "ℤ[φ]-primes via N_H" or
+  "icosian primes" instead.
 
 ---
 
@@ -173,7 +173,6 @@ programme as `dim Fix(τ_ico)`.
 
 ## Closing note
 
-This vocabulary is canonical for the icosian-triad-v600 bundle. When other
-papers reference the triad, they should use the symbols and verbs above,
-not legacy terminology from the retired closure-irreducibles trilogy or
-ad-hoc renamings.
+This vocabulary is canonical for the icosian-triad-v600 bundle. When
+downstream papers reference the triad, they should use the symbols and
+verbs above.

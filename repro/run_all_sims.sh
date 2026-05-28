@@ -29,29 +29,30 @@ run() {
   fi
 }
 
-# Deliberate-negative sims are run separately: they produce structural
-# findings rather than acceptance passes (see docs/FINDINGS.md).
-run_negative() {
+# Structural diagnostic sims: they probe a specific structural property
+# and write the result (positive or negative) to repro/output/.
+# Their exit code is informational, not pass/fail for the bundle.
+run_diagnostic() {
   local n=$1; local script=$2; local what=$3
   echo
-  echo "--- Sim $n: $script  [deliberate negative] ---"
+  echo "--- Sim $n: $script  [structural diagnostic] ---"
   python3 "$script" > /dev/null 2>&1 || true
   echo "  Recorded ($what)"
 }
 
-run           1 sim_geometry_first.py
-run           2 sim_irrep_identification.py
-run           3 sim_second_shell_operator.py
-run           4 sim_association_scheme.py
-run           5 sim_p_polynomial_structure.py
-run_negative  6 sim_tridiagonal_L1.py        "V_600 is NOT narrow-DRG"
-run_negative  7 sim_graph_distance_scheme.py "graph-distance scheme distinct from Euclidean"
-run           8 sim_closure_sigma_action.py
-run           9 sim_generation_operator.py
-run          10 sim_triad_isomorphism.py
-run          11 sim_representation_numbers.py
-run          12 sim_multiplicativity.py
-run          13 sim_theta_L_function.py
+run             1 sim_geometry_first.py
+run             2 sim_irrep_identification.py
+run             3 sim_second_shell_operator.py
+run             4 sim_association_scheme.py
+run             5 sim_p_polynomial_structure.py
+run_diagnostic  6 sim_tridiagonal_L1.py        "narrow-DRG probe on Euclidean shells"
+run_diagnostic  7 sim_graph_distance_scheme.py "graph-distance shell structure"
+run             8 sim_closure_sigma_action.py
+run             9 sim_generation_operator.py
+run            10 sim_triad_isomorphism.py
+run            11 sim_representation_numbers.py
+run            12 sim_multiplicativity.py
+run            13 sim_theta_L_function.py
 
 echo
 echo "================================"

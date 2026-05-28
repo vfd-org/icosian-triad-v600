@@ -30,10 +30,11 @@ Initial public release of the icosian-triad-v600 bundle.
 
 ### Reproduction infrastructure
 
-- 13 simulations under `repro/sims/`, all passing acceptance with the
-  caveat that sim 6 (`sim_tridiagonal_L1.py`) and sim 7
-  (`sim_graph_distance_scheme.py`) are deliberate negatives that
-  surfaced the not-narrow-DRG and Euclidean-vs-graph-shell findings.
+- 13 simulations under `repro/sims/`. Sims 1–5 and 8–13 verify the
+  triad's positive structural claims; sims 6 and 7 are structural
+  diagnostics that establish, respectively, that V₆₀₀ is not a narrow
+  distance-regular graph in the BCN sense, and that its graph-distance
+  shell partition is strictly coarser than its Euclidean-distance scheme.
 - `repro/run_all_sims.sh` runs all 13 in canonical order.
 - `repro/requirements.txt` lists Python dependencies (numpy, sympy).
 
@@ -41,8 +42,6 @@ Initial public release of the icosian-triad-v600 bundle.
 
 - `docs/FINDINGS.md` — load-bearing finding summary (one row per sim).
 - `docs/VOCABULARY.md` — canonical vocabulary for the three legs.
-- `docs/TRILOGY_AUDIT.md` — explanation of why the earlier
-  closure-irreducibles trilogy was retired in favour of this bundle.
 
 ### Scope
 

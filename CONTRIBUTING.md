@@ -47,9 +47,6 @@ surfaced).
 
 ## What we will not accept
 
-- Re-introducing the retired closure-irreducibles trilogy framing
-  (`docs/TRILOGY_AUDIT.md` explains why it was retired). The replacement
-  is the current bundle.
 - Claims that the bundle proves RH, GRH, or any of their generalisations.
 - Claims that the bundle settles consciousness, life, or cosmology
   independently of the cited bridge hypotheses.
