@@ -1,0 +1,134 @@
+{
+  "ring": {
+    "rank": 8,
+    "gram_det": 625,
+    "n_units": 120
+  },
+  "prime_local_factors": [
+    {
+      "type": "split-11",
+      "varpi": [
+        3,
+        1
+      ],
+      "N_Q": 11,
+      "r": 1440,
+      "r_over_120": 12,
+      "pred": 12,
+      "ok": true
+    },
+    {
+      "type": "split-19",
+      "varpi": [
+        4,
+        1
+      ],
+      "N_Q": 19,
+      "r": 2400,
+      "r_over_120": 20,
+      "pred": 20,
+      "ok": true
+    },
+    {
+      "type": "split-29",
+      "varpi": [
+        5,
+        1
+      ],
+      "N_Q": 29,
+      "r": 3600,
+      "r_over_120": 30,
+      "pred": 30,
+      "ok": true
+    },
+    {
+      "type": "inert-2",
+      "varpi": [
+        2,
+        0
+      ],
+      "N_Q": 4,
+      "r": 600,
+      "r_over_120": 5,
+      "pred": 5,
+      "ok": true
+    },
+    {
+      "type": "inert-3",
+      "varpi": [
+        3,
+        0
+      ],
+      "N_Q": 9,
+      "r": 1200,
+      "r_over_120": 10,
+      "pred": 10,
+      "ok": true
+    },
+    {
+      "type": "ramif-5",
+      "varpi": [
+        2,
+        1
+      ],
+      "N_Q": 5,
+      "r": 720,
+      "r_over_120": 6,
+      "pred": 6,
+      "ok": true
+    }
+  ],
+  "inert2_power_factors": [
+    {
+      "k": 0,
+      "varpi": [
+        1,
+        0
+      ],
+      "N_Q": 1,
+      "r": 120,
+      "r_over_120": 1,
+      "sigma1": 1,
+      "ok": true
+    },
+    {
+      "k": 1,
+      "varpi": [
+        2,
+        0
+      ],
+      "N_Q": 4,
+      "r": 600,
+      "r_over_120": 5,
+      "sigma1": 5,
+      "ok": true
+    },
+    {
+      "k": 2,
+      "varpi": [
+        4,
+        0
+      ],
+      "N_Q": 16,
+      "r": 2520,
+      "r_over_120": 21,
+      "sigma1": 21,
+      "ok": true
+    },
+    {
+      "k": 3,
+      "varpi": [
+        8,
+        0
+      ],
+      "N_Q": 64,
+      "r": 10200,
+      "r_over_120": 85,
+      "sigma1": 85,
+      "ok": true
+    }
+  ],
+  "conclusion": "L(Theta_I,s) = zeta_K(s)*zeta_K(s-1) exactly; C_2 = 1; the prior r(2)=24 / C_2 != 1 was a Lipschitz-suborder artifact, retracted.",
+  "C_2": "1 (no local-2 correction; maximal-order inert-2 factor is standard Eisenstein)",
+  "overall_pass": true
+}

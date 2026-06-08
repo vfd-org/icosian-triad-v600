@@ -167,37 +167,36 @@ Verified on all 20 witness quaternions. Consequences:
 For every odd totally positive ℤ[φ]-prime π:
 
 ```
-r(π) := #{q ∈ 𝓘 : N_H(q) = π} = 8 · (1 + N_Q(π))
+r(π) := #{q ∈ 𝓘_max : N_H(q) = π} = 120 · (1 + N_Q(π))     [maximal order]
 ```
 
-Verified for 19/20 canonical primes (every odd one).
+Verified for EVERY prime type via complete Fincke–Pohst enumeration in the
+maximal icosian order (`sim_theta_maximal_order.py`): split (N=11,19,29),
+inert 2 (r=600) and 3 (r=1200), ramified 5 (r=720) — all r/120 = 1+N.
 
-**Anomaly at 2:** `r(2) = 24`, not `8·5 = 40`. Structurally analogous to
-Jacobi's r(n) anomaly over ℤ at n = 2. Source: icosian order is not maximal
-at the prime 2.
+**No anomaly at 2 (corrected, 2026-06-08).** The maximal order gives
+`r(2) = 600 = 120·5` — the standard Eisenstein value. The earlier `r(2)=24`
+came from the **Lipschitz suborder** `𝓘_lip = ℤ[φ]^4` (8 units), a
+bounded-range enumeration proxy that is non-maximal at 2. That suborder value,
+and the local-2 correction it induced, are withdrawn.
 
-### Multiplicativity of r/8 (`sim_multiplicativity.py`)
+### Multiplicativity (`sim_multiplicativity.py`)
 
-For coprime totally positive `α, β ∈ ℤ[φ]`:
+For coprime totally positive `α, β ∈ ℤ[φ]`, the normalized count
+`r̃ = r/120` is multiplicative: `r̃(α·β) = r̃(α)·r̃(β)`. Verified for 6
+coprime pairs (inert×inert, inert×ramified, inert×split, split×split-σ,
+split×split distinct-rationals); composite norm up to 209.
+
+### L-function identification (`sim_theta_maximal_order.py`)
 
 ```
-r(α·β) = r(α)·r(β) / 8
+L(Θ_𝓘, s) := Σ_{α≠0 mod units} (r(α)/120) · N_Q(α)^(-s)
+           = ζ_K(s) · ζ_K(s-1)        EXACTLY  (C_2 = 1)
 ```
 
-Verified for 6 coprime pairs covering inert × inert, inert × ramified,
-inert × split, split × split-σ-conjugate, split × split distinct-rationals.
-Composite norm up to 209.
-
-### L-function identification (`sim_theta_L_function.py`)
-
-```
-L(Θ_𝓘, s) := Σ_{α≠0} (r(α)/8) · N_Q(α)^(-s)
-           = ζ_K(s) · ζ_K(s-1)
-```
-
-where K = ℚ(√5). Verified numerically at s = 2.5, 3.0, 3.5, 4.0, 5.0
-against the direct sum truncated at norm K_max = 100. At s = 5: ratio
-matches to 6 decimal places. Convergence is exact in the limit K_max → ∞.
+where K = ℚ(√5). The inert-2 powers give r((2)^k)/120 = σ_1((2)^k) =
+1,5,21,85, whose generating function is the standard Eisenstein local factor
+`1/[(1-4^{-s})(1-4^{1-s})]` — so there is no local-2 correction.
 
 Via Dedekind factorisation:
 ```
@@ -206,8 +205,7 @@ Via Dedekind factorisation:
 
 so the icosian-derived L-function admits the **Euler bridge factorisation**:
 ```
-L(Θ_𝓘, s) = ζ(s) · L(s, χ_5) · ζ(s-1) · L(s-1, χ_5)
-            · C_2(s)        [explicit local-2 correction]
+L(Θ_𝓘, s) = ζ(s) · L(s, χ_5) · ζ(s-1) · L(s-1, χ_5)        (exact)
 ```
 
 Classical Riemann zeta ζ(s) appears as one Euler factor.
@@ -222,9 +220,9 @@ Classical Riemann zeta ζ(s) appears as one Euler factor.
 | Closure 𝒞 | C_φ = L + φ⁻²·I | Sim 8 |
 | Generation 𝒢 | N_H : 𝓘 → ℤ[φ] | Sims 9–10 |
 | σ-equivariance | σ ∘ N_H = N_H ∘ σ̂ | Sim 10 |
-| Closed form | r(π) = 8(1 + N_Q(π)) | Sim 11 |
-| Multiplicativity | r(αβ) = r(α)r(β)/8 | Sim 12 |
-| L-function | L(Θ_𝓘, s) = ζ_K(s)·ζ_K(s-1) | Sim 13 |
+| Closed form | r(π) = 120(1 + N_Q(π)), every prime (maximal order) | Sim 13 |
+| Multiplicativity | r̃(αβ) = r̃(α)r̃(β),  r̃ = r/120 | Sim 12 |
+| L-function | L(Θ_𝓘, s) = ζ_K(s)·ζ_K(s-1) exactly (C_2=1) | Sim 13 |
 
 ---
 
@@ -257,9 +255,10 @@ sim_graph_distance_scheme.py      [step 7]  6-class graph scheme, distinct
 sim_closure_sigma_action.py       [step 8]  C_φ spectrum + σ-pairing
 sim_generation_operator.py        [step 9]  N_H surjective on 20 primes
 sim_triad_isomorphism.py          [step 10] σ-equivariance on witnesses
-sim_representation_numbers.py     [step 11] r(π) = 8(1 + N_Q(π))
-sim_multiplicativity.py           [step 12] r/8 multiplicative
-sim_theta_L_function.py           [step 13] L(Θ_𝓘, s) = ζ_K(s)·ζ_K(s-1)
+sim_representation_numbers.py     [step 11] Lipschitz proxy (8 units), odd π
+sim_multiplicativity.py           [step 12] r̃ = r/120 multiplicative
+sim_theta_maximal_order.py        [step 13] maximal order: r(π)=120(1+N) every prime;
+                                            L(Θ_𝓘,s) = ζ_K(s)·ζ_K(s-1) exactly (C_2=1)
 ```
 
 All sims accept the same `repro/output/` directory and write `*_results.json`.

@@ -2,6 +2,31 @@
 
 All notable changes to this bundle are documented here.
 
+## [1.1.0] — 2026-06-08
+
+### Corrected (maximal-order theta; the local-2 factor)
+
+- **The L-function identity is now exact: `L(Θ_I, s) = ζ_K(s)·ζ_K(s-1)`
+  with no local-2 correction (`C_2 = 1`).** An audit found the earlier
+  `C_2(s) = 1 - 2·2^{-s} + 2^{2-2s}` and the value `r(2) = 24` were
+  artifacts of the **Lipschitz suborder** `I_lip = Z[φ]^4` (8 units),
+  used as a bounded-range enumeration proxy; that suborder is non-maximal
+  at 2. The **maximal icosian order** (120 units) gives `r(2) = 600 = 120·5`
+  and `r(π) = 120(1 + N_Q(π))` at every prime — split, inert (incl. 2),
+  and ramified — with `r((2)^k)/120 = σ_1((2)^k) = 1,5,21,85`. Hence the
+  local-2 factor is standard and `C_2 = 1`.
+- The retracted `C_2` was also dimensionally ill-formed (a bare `2^{-s}`
+  term at an inert prime of norm 4, which admits only `4^{-s}`).
+- New verification `repro/sims/sim_theta_maximal_order.py` (with copied
+  deps `quaternion_order.py`, `ok_arithmetic.py`) computes the maximal-order
+  representation numbers by complete Fincke–Pohst enumeration and confirms
+  the exact identity. The old `sim_theta_L_function.py` (which summed the
+  textbook divisor-sum series, not the geometric theta) and the
+  Lipschitz `sim_representation_numbers.py` are retained for provenance.
+- Theorem, corollary, scope box, abstract, and appendix in
+  `papers/01-icosian-triad/` updated accordingly; the appendix now records
+  `C_2 = 1` and the retraction.
+
 ## [1.0.0-rc1] — 2026-05-28
 
 Initial public release of the icosian-triad-v600 bundle.

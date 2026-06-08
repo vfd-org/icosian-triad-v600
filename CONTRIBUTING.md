@@ -20,9 +20,10 @@ The bundle is built around a clear separation:
   match) are backed by the 13 simulations under `repro/sims/`. If a
   sim disagrees with the paper, that is a bug we want to fix.
 - **Universal arithmetic claims** (representation counts on all
-  Z[φ]-primes, the full Euler product, the local-2 correction
-  derivation) are imported from classical Eichler–Hijikata /
-  Eichler–Brandt theory. If we have miscited or misapplied a classical
+  Z[φ]-primes, and the exact Euler product L(Θ,s)=ζ_K(s)ζ_K(s-1) with
+  no local-2 correction) are verified in the maximal order and agree with
+  classical Eichler–Hijikata / Eichler–Brandt theory. If we have
+  miscited or misapplied a classical
   result, please flag it with the exact theorem reference you
   consider correct.
 

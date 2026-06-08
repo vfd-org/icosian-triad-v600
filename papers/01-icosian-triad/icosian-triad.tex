@@ -86,10 +86,17 @@ $\NH : \II \to \Zphi$ defined by $\NH(q) = q\bar q = q_0^2 + q_1^2 + q_2^2 + q_3
 is surjective onto the set of totally positive $\Zphi$-primes (up to units),
 with explicit representation counts
 \[
-  r(\pi) \;:=\; \#\{\, q \in \IImax : \NH(q) = \pi\,\} \;=\; 8\bigl(1 + \NQ(\pi)\bigr)
-  \qquad \text{for every odd }\Zphi\text{-prime }\pi,
+  r(\pi) \;:=\; \#\{\, q \in \IImax : \NH(q) = \pi\,\} \;=\; 120\bigl(1 + \NQ(\pi)\bigr)
+  \qquad \text{for every }\Zphi\text{-prime }\pi,
 \]
-together with the local-$2$ anomaly $r(2)=24$.
+\emph{including} the inert prime $2$, where $r(2) = 600 = 120\cdot 5$ (no
+anomaly: the maximal order is locally standard at $2$). The normalised count
+$\widetilde r := r/120 = 1 + \NQ(\pi) = \sigma_1^{\Zphi}((\pi))$ is the
+Eisenstein divisor coefficient. The bounded-range simulations of
+\S\ref{sec:repro} are performed in the Lipschitz suborder
+$\IIlip = \Zphi^4$ ($8$ units), which agrees with $\IImax$ away from $2$ but
+is non-maximal at $2$, giving the suborder value $r_{\IIlip}(2)=24$ --- an
+artifact of $\IIlip$, not a property of the icosian ring.
 
 \smallskip\noindent\textbf{Galois equivariance.}
 The Galois involution $\sigma : \varphi \mapsto 1-\varphi$ acts on $\Zphi$, on
@@ -102,34 +109,34 @@ $\sigma$-fixed eigenspace family equals
 $\dim E_0 + \dim E_3 + \dim E_4 + \dim E_5 + \dim E_7 = 1+16+25+36+16 = 94$.
 
 \smallskip\noindent\textbf{The L-function identity.}
-The icosian quaternion representation function $r$ is multiplicative modulo
-the factor $8$: $r(\alpha\beta) = r(\alpha) r(\beta)/8$ for coprime totally
-positive $\alpha, \beta \in \Zphi$. The icosian theta L-function therefore
-factors as
+The normalised representation function $\widetilde r = r/120$ is multiplicative:
+$\widetilde r(\alpha\beta) = \widetilde r(\alpha)\,\widetilde r(\beta)$ for coprime
+totally positive $\alpha, \beta \in \Zphi$. Since $\widetilde r(\pi) =
+\sigma_1^{\Zphi}((\pi))$ at \emph{every} prime (including $2$), the icosian theta
+L-function is the divisor-sum Dirichlet series, which factors \emph{exactly}:
 \[
-  L(\Theta_\II, s) \;:=\; \tfrac{1}{8}\sum_{0 \neq \alpha \in \Zphi}
-  r(\alpha)\!\cdot\! \NQ(\alpha)^{-s}
-  \;=\; \zeta_K(s)\!\cdot\! \zeta_K(s-1) \cdot C_2(s)
+  L(\Theta_\II, s) \;:=\; \sum_{0 \neq \alpha \in \Zphi/\Zphi^\times}
+  \widetilde r(\alpha)\!\cdot\! \NQ(\alpha)^{-s}
+  \;=\; \zeta_K(s)\!\cdot\! \zeta_K(s-1)
 \]
-for $K = \Q(\sqrt{5})$, where $C_2(s)$ is the explicit local-$2$
-correction factor (Theorem~\ref{thm:euler-bridge}). Away from the
-prime $\mathfrak{p}_2$, $L(\Theta_\II, s) = \zeta_K(s) \zeta_K(s-1)$.
-Via the classical Dedekind factorisation
+for $K = \Q(\sqrt{5})$ --- with \emph{no} local-$2$ correction
+(Theorem~\ref{thm:euler-bridge}). Via the classical Dedekind factorisation
 $\zeta_K(s) = \zeta(s)\!\cdot\! L(s,\chi_5)$, the Riemann zeta function
-$\zeta(s)$ appears as a Dedekind factor of $L(\Theta_\II, s)$.
+$\zeta(s)$ appears as one Dedekind factor of $L(\Theta_\II, s)$.
 
 \smallskip\noindent\textbf{Status.}
 The finite computational claims (spectrum, intersection-array, $9$-class
 scheme axioms, finite witnesses, finite multiplicativity tests) are
 verified by exact-arithmetic or controlled floating-point simulation
-(see~\S\ref{sec:repro}). The universal arithmetic claims (the
-closed-form representation count $r(\pi) = 8(1 + N_Q(\pi))$ for every
-odd $\Zphi$-prime; multiplicativity of $r/8$ on all coprime
-totally positive elements; the full Euler-product L-function identity
-including prime-power local factors) are supplemented by classical
-arithmetic theorems of Eichler--Hijikata and Eichler--Brandt cited
-at the relevant theorem statements. We do not address the Riemann
-Hypothesis or its Hilbert-modular analogue.
+(see~\S\ref{sec:repro}). The maximal-order representation counts
+$r(\pi)=120(1+N_Q(\pi))$ at every prime type (split, inert---including
+$2$---and ramified) and the resulting exact identity
+$L(\Theta_\II,s)=\zeta_K(s)\zeta_K(s-1)$ are verified by complete
+Fincke--Pohst short-vector enumeration in the maximal icosian ring
+(\texttt{sim\_theta\_maximal\_order.py}); they are also the classical
+Eichler--Hijikata / Eichler--Brandt statements for a maximal order in a
+totally definite quaternion algebra of class number one. We do not address
+the Riemann Hypothesis or its Hilbert-modular analogue.
 \end{abstract}
 
 \bigskip
@@ -222,15 +229,18 @@ conjugates.
 \subsection*{The L-function identification}
 
 The icosian theta series counts representations of $\Zphi$-elements as sums of
-four icosian quaternion squares. Sims~11--13 establish:
+four icosian quaternion squares. Sims~11--13 establish (with $\widetilde r := r/120$,
+the count normalised by the $120$ units of the maximal order):
 
 \begin{itemize}
-  \item $r(\pi) = 8(1 + \NQ(\pi))$ for every odd totally positive
-    $\Zphi$-prime $\pi$ (Eichler--Hecke closed form).
-  \item $r$ is multiplicative modulo the factor $8$ on coprime totally
-    positive $\Zphi$-elements: $r(\alpha\beta) = r(\alpha)r(\beta)/8$.
-  \item The Dirichlet series of $r/8$ factors as $\zeta_K(s)\!\cdot\!\zeta_K(s-1)$,
-    where $K = \Q(\sqrt 5)$.
+  \item $\widetilde r(\pi) = 1 + \NQ(\pi) = \sigma_1^{\Zphi}((\pi))$ for
+    \emph{every} totally positive $\Zphi$-prime $\pi$ --- split, inert
+    (including $2$, where $\widetilde r(2)=5$), and ramified
+    (Eichler--Hecke closed form for the maximal order).
+  \item $\widetilde r$ is multiplicative on coprime totally positive
+    $\Zphi$-elements: $\widetilde r(\alpha\beta) = \widetilde r(\alpha)\widetilde r(\beta)$.
+  \item The Dirichlet series of $\widetilde r$ factors \emph{exactly} as
+    $\zeta_K(s)\!\cdot\!\zeta_K(s-1)$, $K = \Q(\sqrt 5)$ --- no local-$2$ correction.
 \end{itemize}
 
 The classical Dedekind factorisation $\zeta_K(s) = \zeta(s)\!\cdot\! L(s,\chi_5)$
@@ -238,7 +248,7 @@ then identifies the Riemann zeta function $\zeta(s)$ as one Euler factor of
 the icosian theta L-function:
 \[
   L(\Theta_\II, s) \;=\; \zeta(s)\!\cdot\! L(s,\chi_5)\!\cdot\! \zeta(s-1)\!\cdot\! L(s-1, \chi_5)
-  \quad \text{(modulo local-$2$ correction).}
+  \qquad \text{(exactly, for the maximal order).}
 \]
 This is the geometry-first realisation of the cascade Euler bridge
 between the classical Riemann zeta function and the Hilbert modular
@@ -439,10 +449,12 @@ $\IIlip$ they live in $\IIlip$; the $96$ snub vertices do not).
 \textbf{Scope convention.} Throughout this paper:
 \begin{itemize}
 \item All \emph{universal} arithmetic claims (representation count
-  $r(\pi) = 8(1 + N_Q(\pi))$ for every odd $\Zphi$-prime;
-  multiplicativity of $r/8$ on coprime ideals; L-function identity) are
-  stated for $\IImax$ and imported from the classical Eichler--Hijikata
-  / Eichler--Brandt theorems \cite{eichler1958, hijikata1974}.
+  $r(\pi) = 120(1 + N_Q(\pi))$ at every prime; multiplicativity of
+  $\widetilde r = r/120$ on coprime ideals; the exact L-function identity)
+  are stated for $\IImax$, verified by complete short-vector enumeration in
+  $\IImax$ (\texttt{sim\_theta\_maximal\_order.py}), and agree with the
+  classical Eichler--Hijikata / Eichler--Brandt theorems
+  \cite{eichler1958, hijikata1974}.
 \item All \emph{finite} explicit witness searches (Theorem~\ref{thm:univ-rep},
   sim~9) are conducted in the Lipschitz suborder $\IIlip$ and are
   reported as bounded reproducibility checks for the classical
@@ -618,45 +630,54 @@ of $\Zphi$ is the classical Dedekind theorem.
 
 \subsection{Closed form for primes}
 
-\begin{theorem}[Closed-form representation count; Eichler--Hijikata + sim 11]\label{thm:rpi}
-For every \emph{odd} totally positive $\Zphi$-prime $\pi$,
+\begin{theorem}[Closed-form representation count; Eichler--Hijikata + sim 13]\label{thm:rpi}
+For \emph{every} totally positive $\Zphi$-prime $\pi$ --- split, inert, or
+ramified ---
 \[
   r(\pi) \;:=\; \#\{\,q \in \IImax : \NH(q) = \pi\,\}
-  \;=\; 8\!\cdot\!(1 + \NQ(\pi)).
+  \;=\; 120\!\cdot\!(1 + \NQ(\pi)),
 \]
-The unique exception is the local-$2$ prime $\pi = 2 \in \Zphi$, where
-$r(2) = 24$ (not $40 = 8\cdot 5$). The exception is structurally analogous
-to Jacobi's $4$-squares correction at $2$ over $\Z$.
+in the maximal icosian order $\IImax$. In particular at the inert prime
+$\pi = 2 \in \Zphi$ ($\NQ(2)=4$) the count is $r(2) = 600 = 120\cdot 5$; there
+is \emph{no} local-$2$ anomaly. Equivalently $\widetilde r(\pi) := r(\pi)/120
+= 1 + \NQ(\pi) = \sigma_1^{\Zphi}((\pi))$ for every prime.
 \end{theorem}
 
 \begin{proof}
-The closed form $r(\pi) = 8 \cdot (1 + \NQ(\pi))$ for odd $\pi$ is the
-Eichler--Hijikata representation-number formula for the icosian
-quaternion order~\cite{eichler1958,hijikata1974}, which combines the
-local-density computation at each odd prime (giving $1 + \NQ(\pi)$) with
-the size of the unit group of the icosian order (which is $120$; the
-universal constant $8 = 120/15$ comes from the icosian unit's action on
-the representation set). Our \texttt{sim\_representation\_numbers.py}
-computes $r(\pi)$ by direct enumeration (meet-in-the-middle) for all
-twenty canonical totally positive primes whose underlying rational prime
-$p \in \{2,3,5,7,11,13,17,19,23,29,31,37,41,43,47\}$; for each odd prime
-the ratio $r(\pi)/(1+\NQ(\pi))$ equals exactly $8$. For $\pi = 2$,
-$r(2) = 24$, matching the Eichler local-$2$ correction (the icosian
-order is non-maximal at $2$ in the standard embedding).
+The closed form is the Eichler--Hijikata representation-number formula for a
+maximal order in a totally definite quaternion algebra over $K$ of class
+number one~\cite{eichler1958,hijikata1974}: the local density at each finite
+prime $\mathfrak p$ (split, inert, or ramified) is the standard
+$1 + \NQ(\mathfrak p)$, since the algebra $B=(-1,-1/K)$ is unramified at every
+finite prime, and the global constant is the order's unit-group size $120$
+(the $120$ unit icosians). Our \texttt{sim\_theta\_maximal\_order.py} verifies
+this by complete Fincke--Pohst short-vector enumeration in $\IImax$: split
+primes ($N=11,19,29$), the inert primes $2$ ($r=600$) and $3$ ($r=1200$), and
+the ramified prime above $5$ ($r=720$) all give $r/120 = 1+\NQ$, and the inert-$2$
+\emph{powers} give $r((2)^k)/120 = 1,5,21,85 = \sigma_1((2)^k)$ --- the standard
+Eisenstein local factor, so no correction.
+
+\emph{Remark (the earlier ``$r(2)=24$'').} The bounded-range enumerator
+\texttt{sim\_representation\_numbers.py} counts the \emph{Lipschitz suborder}
+$\IIlip = \Zphi^4$ (only $8$ units), which agrees with $\IImax$ at odd primes
+(giving $r_{\IIlip}=8(1+\NQ)$, i.e.\ the same normalised $\widetilde r$) but is
+non-maximal at $2$, where it returns $r_{\IIlip}(2)=24$. That value, and the
+local-$2$ correction it would induce, are artifacts of the suborder and do not
+hold for the icosian ring.
 \end{proof}
 
 \subsection{Multiplicativity}
 
 \begin{theorem}[Multiplicativity; Eichler--Brandt + sim 12]\label{thm:mult}
-For coprime totally positive $\alpha, \beta \in \Zphi$ both coprime to
-$2$,
+For coprime totally positive $\alpha, \beta \in \Zphi$, the normalised count
+$\widetilde r := r/120$ (maximal order) is multiplicative:
 \[
-  r(\alpha\!\cdot\!\beta) \;=\; \tfrac{1}{8}\,r(\alpha)\!\cdot\! r(\beta).
+  \widetilde r(\alpha\!\cdot\!\beta) \;=\; \widetilde r(\alpha)\!\cdot\! \widetilde r(\beta),
+  \qquad\text{equivalently}\qquad
+  r(\alpha\beta) \;=\; \tfrac{1}{120}\,r(\alpha)\,r(\beta).
 \]
-Equivalently, the arithmetic function $\widetilde r := r/8$ is
-multiplicative on coprime totally positive $\Zphi$-elements coprime
-to $2$. The local-$2$ Euler factor is handled separately
-(Theorem~\ref{thm:euler-bridge}).
+Since the maximal order is locally standard at every prime (including $2$),
+no prime is excluded.
 \end{theorem}
 
 \begin{proof}
@@ -712,44 +733,36 @@ not the chosen generator $\alpha$.
 
 \begin{theorem}[L-function identification, Eichler--Brandt + sim 13]\label{thm:euler-bridge}
 Let $K = \Q(\sqrt 5)$ and $\zeta_K(s) = \prod_{\mathfrak{p}} (1 - \NQ(\mathfrak{p})^{-s})^{-1}$
-the Dedekind zeta function of $K$ (Euler product over prime ideals
-$\mathfrak{p}$). Then
+the Dedekind zeta function of $K$. For the \emph{maximal} icosian order $\IImax$,
 \[
-  L(\Theta_\II, s) \;=\; \zeta_K(s)\!\cdot\! \zeta_K(s-1) \cdot C_2(s)
+  L(\Theta_\II, s) \;=\; \zeta_K(s)\!\cdot\! \zeta_K(s-1)
+  \qquad\text{(exactly; no local correction).}
 \]
-where $C_2(s) = (1 - 2 \cdot 2^{-s} + 2^{2-2s})$ is the explicit local-$2$
-Euler-factor correction at the prime $\mathfrak{p}_2 = (2)$, derived from
-the icosian order's non-maximal local behaviour at $2$ (cf.\
-Eichler~\cite{eichler1958}). The local Euler factors at every odd
-$\Zphi$-prime $\pi$ coincide exactly with those of $\zeta_K(s) \zeta_K(s-1)$.
+The local Euler factor at \emph{every} prime $\mathfrak{p}$ --- split, inert
+(including $\mathfrak{p}_2=(2)$), and ramified --- coincides with that of
+$\zeta_K(s)\zeta_K(s-1)$.
 \end{theorem}
 
 \begin{proof}
-Theorem~\ref{thm:rpi} gives, for odd primes,
-$\widetilde r(\pi) = 1 + \NQ(\pi) = \sigma_1^{\Zphi}((\pi))$ (the
-$\Zphi$-divisor sum on the principal ideal). The extension to all prime
-powers $\pi^k$ ($k \geq 2$) and to coprime products is given by the
-Eichler--Brandt theorem for the icosian quaternion
-order~\cite{eichler1958,hijikata1974}, which establishes that
-$\widetilde r(\mathfrak a) = \sigma_1^{\Zphi}(\mathfrak a)$ for every
-$\Zphi$-ideal $\mathfrak{a}$ coprime to $\mathfrak{p}_2 = (2)$.
-Theorem~\ref{thm:mult} and the explicit witnesses verify this in the
-finite tested range. The Dirichlet series identity
-$\sum_{\mathfrak a} \sigma_1(\mathfrak a) \NQ(\mathfrak a)^{-s}
-= \zeta_K(s)\!\cdot\!\zeta_K(s-1)$
-is the standard Eisenstein structure identity for the divisor function
-of a number field. The local-$2$ correction $C_2(s)$ is computed
-explicitly: with $r(2) = 24$ and the icosian's non-maximal local
-structure at $2$, the local Euler factor at $\mathfrak{p}_2$ is
-$(1 - 2 \cdot 2^{-s} + 2^{2-2s})$ rather than the standard
-$(1 - 2^{-s})^{-1}(1 - 2^{1-s})^{-1}$ of $\zeta_K(s) \zeta_K(s-1)$ at the
-inert prime $2$; the ratio is $C_2(s)$.
+By Theorem~\ref{thm:rpi}, $\widetilde r(\pi)=1+\NQ(\pi)=\sigma_1^{\Zphi}((\pi))$
+at every prime, and by Theorem~\ref{thm:mult} $\widetilde r$ is multiplicative;
+hence $\widetilde r(\mathfrak a)=\sigma_1^{\Zphi}(\mathfrak a)$ for every
+$\Zphi$-ideal $\mathfrak a$. The Dirichlet series identity
+$\sum_{\mathfrak a}\sigma_1(\mathfrak a)\NQ(\mathfrak a)^{-s}
+=\zeta_K(s)\zeta_K(s-1)$ is the standard Eisenstein divisor-sum identity for
+$K$. The only delicate prime is the inert $\mathfrak p_2=(2)$, where the
+algebra $B=(-1,-1/K)$ is nonetheless unramified; the maximal-order local factor
+there is the standard $(1-4^{-s})^{-1}(1-4^{1-s})^{-1}$, confirmed by complete
+Fincke--Pohst enumeration giving $\widetilde r((2)^k)=\sigma_1((2)^k)=1,5,21,85$
+(\texttt{sim\_theta\_maximal\_order.py}). Hence no local-$2$ correction occurs.
 
-Numerical verification at $s = 2.5, 3, 3.5, 4, 5$ in
-\texttt{sim\_theta\_L\_function.py} confirms convergence of the truncated
-direct sum to $\zeta_K(s)\!\cdot\!\zeta_K(s-1) \cdot C_2(s)$ at the
-predicted rate (ratio approaches $1$ to six decimal places at $s=5$ for
-truncation $K_{\max} = 100$).
+\emph{Retraction.} Earlier drafts (and \texttt{sim\_theta\_L\_function.py})
+asserted a correction factor $C_2(s)=1-2\cdot2^{-s}+2^{2-2s}$ from a value
+$r(2)=24$. That value is the count in the \emph{Lipschitz suborder} $\IIlip$
+(8 units), which is non-maximal at $2$; for the maximal icosian ring
+$r(2)=600=120\cdot5$ and $C_2\equiv 1$. The earlier $C_2$ is withdrawn. (It was
+also dimensionally ill-formed: an inert prime of norm $4$ admits only a local
+factor in $4^{-s}$, not the $2^{-s}$ written there.)
 \end{proof}
 
 \subsection{Appearance of the Riemann zeta function}
@@ -758,7 +771,7 @@ truncation $K_{\max} = 100$).
 Via the classical Dedekind factorisation $\zeta_K(s) = \zeta(s)\!\cdot\! L(s,\chi_5)$,
 the icosian theta L-function admits the factorisation
 \[
-  L(\Theta_\II, s) \;=\; \zeta(s)\!\cdot\! L(s,\chi_5)\!\cdot\! \zeta(s-1)\!\cdot\! L(s-1,\chi_5) \cdot C_2(s),
+  L(\Theta_\II, s) \;=\; \zeta(s)\!\cdot\! L(s,\chi_5)\!\cdot\! \zeta(s-1)\!\cdot\! L(s-1,\chi_5),
 \]
 in which the Riemann zeta function $\zeta(s)$ appears as one Euler factor of
 the geometry-derived icosian theta.
@@ -775,7 +788,7 @@ it does not address the zero-distribution questions (RH, GRH).
 \subsection{The Riemann Hypothesis and its generalisations}
 
 Theorem~\ref{thm:euler-bridge} identifies $L(\Theta_\II, s)$ with
-$\zeta_K(s)\!\cdot\!\zeta_K(s-1)\!\cdot\! C_2(s)$. The zero set of
+$\zeta_K(s)\!\cdot\!\zeta_K(s-1)$ exactly. The zero set of
 $L(\Theta_\II, s)$ therefore coincides with the union of:
 \begin{enumerate}
   \item Zeros of $\zeta(s)$ — the classical Riemann zeros;
@@ -805,50 +818,40 @@ Hecke-operator framework here.
 
 \bigskip
 
-\section{Appendix: derivation of the local-$2$ Euler factor}\label{sec:local-2}
+\section{Appendix: the local factor at $2$ (maximal order; no correction)}\label{sec:local-2}
 
-This appendix derives the explicit local-$2$ Euler factor $C_2(s)$ in
-Theorem~\ref{thm:euler-bridge}. The result is classical (Eichler;
-see also Vign\'eras~\cite{vigneras}) but is recorded explicitly here
-for verifiability.
+This appendix records the local Euler factor at the inert prime
+$\mathfrak{p}_2=(2)$ for the \emph{maximal} icosian order, and explains why
+an earlier draft's correction factor $C_2(s)$ was spurious.
 
-The rational prime $2$ is inert in $\Zphi$: the ideal $(2) \subset \Zphi$
-remains prime and has rational norm $N_Q(2) = 4$. In a generic
-totally definite quaternion order over $K = \Q(\sqrt 5)$, the local
-Euler factor of the theta series at an inert prime $\mathfrak{p}$ with
-$N_Q(\mathfrak{p}) = q$ is
+The rational prime $2$ is inert in $\Zphi$: $(2)$ is prime of rational norm
+$\NQ((2))=4$. The algebra $B=(-1,-1/K)$ is ramified only at the two
+\emph{infinite} places, hence unramified at every finite prime, $2$ included.
+For a maximal order in such an algebra the local theta factor at a prime of
+norm $q$ is the standard
 \[
-  L_{\mathfrak{p}}^{\mathrm{generic}}(s) \;=\; (1 - q^{-s})^{-1}(1 - q^{1-s})^{-1}.
+  L_{\mathfrak p}(s) \;=\; (1 - q^{-s})^{-1}(1 - q^{1-s})^{-1},
 \]
-For $\mathfrak{p}_2 = (2)$ with $q = 4$, this would be
-$(1 - 4^{-s})^{-1}(1 - 4^{1-s})^{-1}$, which contributes a factor of
-$\sigma_1((2)) = 1 + 4 = 5$ at $s = 0$, predicting $r(2) = 8 \cdot 5 = 40$.
-The icosian quaternion order is, however, non-maximal at the prime $2$
-in the standard Lipschitz embedding (the half-integer elements of
-$\IImax$ ``saturate'' the order locally at primes other than $2$ but
-not at $2$ itself). The local consequence is that the icosian
-representation count at $\pi = 2$ is $r(2) = 24$ rather than $40$.
-
-The local Euler factor at $\mathfrak{p}_2$ is therefore corrected by
-the ratio
+so at $\mathfrak p_2$ (with $q=4$) it is $(1-4^{-s})^{-1}(1-4^{1-s})^{-1}$,
+predicting $r(2)=120\cdot(1+4)=600$ and, more fully,
+$\widetilde r((2)^k)=\sigma_1((2)^k)=(4^{k+1}-1)/3 = 1,5,21,85,\dots$.
+Complete Fincke--Pohst enumeration in the maximal icosian ring
+(\texttt{sim\_theta\_maximal\_order.py}) confirms these exactly:
+$r((2)^k)=120\cdot(1,5,21,85)=120,600,2520,10200$. The generating function
+$\sum_k \sigma_1((2)^k)\,(4^{-s})^k = \big[(1-4^{-s})(1-4^{1-s})\big]^{-1}$ is
+precisely the standard factor, so the local-$2$ correction is
 \[
-  C_2(s) \;:=\; \frac{L_{\mathfrak{p}_2}^{\mathrm{icosian}}(s)}{L_{\mathfrak{p}_2}^{\mathrm{generic}}(s)}.
-\]
-Writing $T = 2^{-s}$ for compactness (note $\NQ((2)) = 4$, so the
-ideal-norm variable for $\mathfrak{p}_2$ is $T^2 = 4^{-s}$), the generic
-local factor is $(1 - T^2)^{-1}(1 - 2T^2)^{-1}$. The icosian local factor is
-$(1 - 3T^2 + 2T^4)$ after Euler-product reconstruction from the
-sequence $r(2^k) = 8 \cdot (1, 3, 10, 36, 136, \ldots)$ (where the
-coefficients are the icosian-order local representation numbers
-computed in~\cite{eichler1958}). Multiplying these two gives the
-explicit form
-\[
-  C_2(s) \;=\; (1 - 2 \cdot 2^{-s} + 2^{2-2s}) \;=\; (1 - T)^2 \cdot 2^0 + O(T^4).
+  C_2(s) \;=\; 1.
 \]
 
-This $C_2(s)$ is holomorphic and non-vanishing in the half-plane
-$\Re(s) > 1$ and contributes neither additional zeros nor poles to
-$L(\Theta_\II, s)$ in that half-plane.
+\emph{What went wrong before.} A previous draft took $r(2)=24$ and built a
+factor $C_2(s)=1-2\cdot2^{-s}+2^{2-2s}$. The value $24$ is the count in the
+\emph{Lipschitz suborder} $\IIlip=\Zphi^4$ (which has only $8$ units and is
+non-maximal at $2$), used as a bounded-range enumeration proxy; it is not the
+maximal-order count. The stated factor was moreover ill-formed dimensionally:
+an inert prime of norm $4$ admits a local factor only in $4^{-s}$, whereas
+$1-2\cdot2^{-s}+\dots$ contains a bare $2^{-s}$. Both the value and the factor
+are withdrawn; the maximal-order answer is the clean $C_2=1$ above.
 
 \bigskip
 
@@ -870,16 +873,22 @@ All numerical claims in this paper are produced by the simulations listed in
 \ref{thm:univ-rep} (Generation)          & \texttt{sim\_generation\_operator.py}   & \texttt{generation\_operator\_results.json} \\
 \ref{thm:sigma-pair} ($\sigma$-pair)     & \texttt{sim\_closure\_sigma\_action.py} & \texttt{closure\_sigma\_action\_results.json} \\
 \ref{thm:triad-iso} (Triad iso)          & \texttt{sim\_triad\_isomorphism.py}     & \texttt{triad\_isomorphism\_results.json} \\
-\ref{thm:rpi} ($r(\pi)$ closed form)     & \texttt{sim\_representation\_numbers.py} & \texttt{representation\_numbers\_results.json} \\
+\ref{thm:rpi} ($r(\pi)$, maximal order)   & \texttt{sim\_theta\_maximal\_order.py}  & \texttt{theta\_maximal\_order\_results.json} \\
+\ref{thm:rpi} (Lipschitz proxy, odd $\pi$) & \texttt{sim\_representation\_numbers.py} & \texttt{representation\_numbers\_results.json} \\
 \ref{thm:mult} (Multiplicativity)        & \texttt{sim\_multiplicativity.py}       & \texttt{multiplicativity\_results.json} \\
-\ref{thm:euler-bridge} (L-function)      & \texttt{sim\_theta\_L\_function.py}     & \texttt{theta\_L\_function\_results.json} \\
+\ref{thm:euler-bridge} (L-function, exact) & \texttt{sim\_theta\_maximal\_order.py}  & \texttt{theta\_maximal\_order\_results.json} \\
 \hline
 \end{tabular}
 \end{center}
 
-Each simulation runs in under a minute on a standard laptop. All thirteen
-sims pass their acceptance criteria. The full output is included in
-\texttt{repro/output/}.
+Each simulation runs in well under a minute on a standard laptop and passes its
+acceptance criteria. The maximal-order representation counts and the exact
+identity $L(\Theta_\II,s)=\zeta_K(s)\zeta_K(s-1)$ are verified by complete
+short-vector enumeration in \texttt{sim\_theta\_maximal\_order.py}; the earlier
+\texttt{sim\_theta\_L\_function.py} (which summed the divisor-sum Dirichlet
+series rather than the geometric theta, and the Lipschitz-suborder
+\texttt{sim\_representation\_numbers.py}) are retained for provenance. Full
+output is in \texttt{repro/output/}.
 
 \bigskip
 
