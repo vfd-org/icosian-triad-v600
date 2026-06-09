@@ -123,6 +123,11 @@ This bundle is the structural anchor for several existing VFD releases:
   layer above the triad: it certifies the ζ-boundary (ζ is one factor, not
   isolated) and localizes the RH positivity gap to GRH for one cuspidal
   L-function — explicitly **not** a claim about classical RH.
+- [`icosian-rh-geometric`](https://github.com/vfd-org/icosian-rh-geometric)
+  (v0.1.0-draft) is the **flagship** that derives this bundle's exact identity in one
+  continuous chain (object → arithmetic → witness form) and reaches a geometric
+  equivalent `Q_A ≥ 0 ⟺ RH(L)` — GRH for one cuspidal L, not classical RH; positivity
+  is the open frontier, no RH/GRH proof claimed.
 
 Paper 2 makes these relationships explicit.
 
